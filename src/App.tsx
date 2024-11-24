@@ -6,9 +6,13 @@ function App() {
 
     return (
         <>
-            <MyComponent text={'hello1'}/>
-            <MyComponent text={'hello2'}/>
-            <MyComponent text={'hello okten'}/>
+            <MyComponent title={'title 1'}>
+                Lorem ipsum dolor sit.
+            </MyComponent>
+            <MyComponent title={'title 2'}>
+
+            </MyComponent>
+            <MyComponent title={'title 3'}/>
             {/*{MyComponent({text: 'hello 2'})}*/}
         </>
     );

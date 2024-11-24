@@ -1,11 +1,16 @@
-import {FC} from "react";
+import {FC, ReactNode} from "react";
 
-type MyComponentPropType = { text: string };
 
-const MyComponent: FC<MyComponentPropType> = ({text}) => {
+type MyComponentPropType = {
+    title: string;
+    children?: ReactNode;
+};
+
+const MyComponent: FC<MyComponentPropType> = ({title, children}) => {
     return (
         <div className='text-3xl font-bold underline'>
-            {text}
+            <h2>{title}</h2>
+            <p>{children}</p>
         </div>
     );
 };
