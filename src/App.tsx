@@ -1,17 +1,15 @@
-import './App.css';
-import MyComponent from "./components/MyComponent.tsx";
-
-function App() {
+import PaginationComponent from "./components/pagination/PaginationComponent.tsx";
+import Some from "./components/some/Some.tsx";
 
 
+const App = () => {
     return (
-        <>
-            <MyComponent text={'hello1'}/>
-            <MyComponent text={'hello2'}/>
-            <MyComponent text={'hello okten'}/>
-            {/*{MyComponent({text: 'hello 2'})}*/}
-        </>
+        <div>
+            <Some/>
+            hello
+            <PaginationComponent/>
+        </div>
     );
-}
+};
 
-export default App
+export default App;
