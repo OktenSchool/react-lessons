@@ -1,15 +1,20 @@
 import './App.css';
-import MyComponent from "./components/MyComponent.tsx";
+import {useEffect} from "react";
+import {getUsers} from "./services/user.service.ts";
 
 function App() {
 
+    useEffect(() => {
 
+        getUsers().then((users) => {
+            console.log(users);
+        })
+
+
+    }, []);
     return (
         <>
-            <MyComponent text={'hello1'}/>
-            <MyComponent text={'hello2'}/>
-            <MyComponent text={'hello okten'}/>
-            {/*{MyComponent({text: 'hello 2'})}*/}
+
         </>
     );
 }
