@@ -1,17 +1,14 @@
+import {FC} from 'react';
 import './App.css';
-import MyComponent from "./components/MyComponent.tsx";
+import FormComponent from "./components/FormComponent";
 
-function App() {
-
-
+const App: FC = () => {
     return (
         <>
-            <MyComponent text={'hello1'}/>
-            <MyComponent text={'hello2'}/>
-            <MyComponent text={'hello okten'}/>
-            {/*{MyComponent({text: 'hello 2'})}*/}
+            <FormComponent/>
         </>
+
     );
 }
 
-export default App
+export default App;
