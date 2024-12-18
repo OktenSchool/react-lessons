@@ -1,23 +1,25 @@
 import {useAppDispatch, useAppSelector} from "../redux/store.ts";
 import {userActions} from "../redux/slices/userSlice.tsx";
+import {useEffect} from "react";
 
 export const UsersPage = () => {
 
-    const {isLoaded} = useAppSelector(({userSlice}) => userSlice);
+    const {isLoaded, users} = useAppSelector(({userSlice}) => userSlice);
     const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(userActions.loadUsers())
+
+    }, []);
 
 
     return (
         <div>
-            Users page {isLoaded.toString()}
+            <br/>
 
-            <button onClick={() => {
-                setTimeout(() => {
-                    dispatch(userActions.changeLoadState(true));
-                },2000)
-            }}>chane load state
-            </button>
-
+            {
+                isLoaded ? <>{users.map((user) => <div key={user.id}>{user.name}</div>)}</> : <div>loading</div>
+            }
 
         </div>
     );
