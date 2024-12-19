@@ -1,25 +1,26 @@
-import {useAppDispatch, useAppSelector} from "../redux/store.ts";
-import {userActions} from "../redux/slices/userSlice.tsx";
 import {useEffect} from "react";
+import {useAppSelector} from "../redux/hooks/useAppSelector.tsx";
+import {userSliceActions} from "../redux/slices/userSlice/userSilce.ts";
+import {useAppDispatch} from "../redux/hooks/useAppDispatch.tsx";
 
 export const UsersPage = () => {
-
-    const {isLoaded, users} = useAppSelector(({userSlice}) => userSlice);
+    const {users,loadState} = useAppSelector(({userSlice}) => userSlice);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(userActions.loadUsers())
-
+        dispatch(userSliceActions.loadUsers());
     }, []);
-
 
     return (
         <div>
-            <br/>
+            {!loadState && <div>Loading</div>}
 
             {
-                isLoaded ? <>{users.map((user) => <div key={user.id}>{user.name}</div>)}</> : <div>loading</div>
+                users.map((user) => {
+                    return <div key={user.id}>{user.name}</div>
+                })
             }
+
 
         </div>
     );
