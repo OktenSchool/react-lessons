@@ -15,13 +15,13 @@ If you are developing a production application, we recommend updating the config
 
 ```js
 export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
+    languageOptions: {
+        // other options...
+        parserOptions: {
+            project: ['./tsconfig.node.json', './tsconfig.app.json'],
+            tsconfigRootDir: import.meta.dirname,
+        },
     },
-  },
 })
 ```
 
@@ -34,17 +34,28 @@ export default tseslint.config({
 import react from 'eslint-plugin-react'
 
 export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
+    // Set the react version
+    settings: {react: {version: '18.3'}},
+    plugins: {
+        // Add the react plugin
+        react,
+    },
+    rules: {
+        // other rules...
+        // Enable its recommended rules
+        ...react.configs.recommended.rules,
+        ...react.configs['jsx-runtime'].rules,
+    },
 })
 ```
+
+UYuu2f1
+Частина 1 Ознайомитись з апі http://owu.linkpc.net/carsAPI/v1/doc уважно.
+Створити сторінку, на якій виводити всі автівки (з мінімальною інформацією)
+
+Частина 2 Створити сторінку з формою для створення об'єктів car. Створити сервіси для роботи з апі. (робота сервісу через axios) 
+Впровадити валідацію відповідно до
+документації апі, щоб не можна було збререгти автівку якщо вона не відповідає умовам 
+Не забувайте про те, що потрібно все поділяти на компоненти, але без надлишку (окремий інпут не має сенсу обгорткти в компонент)
+
+http://185.69.152.209/carsAPI/v1/doc
