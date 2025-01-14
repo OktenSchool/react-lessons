@@ -48,3 +48,4 @@ export default tseslint.config({
   },
 })
 ```
+зробив зміни назви гілки
