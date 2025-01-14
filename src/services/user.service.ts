@@ -1,30 +1,41 @@
+import axios from 'axios';
 import {IUser} from "../model/IUser.ts";
-import axios from "axios";
-
-
-// export const getUsers = async (): Promise<IUser[]> => {
-//
-//     return await fetch('https://jsonplaceholder.typicode.com/users')
-//         .then(value => value.json());
-//
-//
-// }
-
 
 const axiosInstance = axios.create({
     baseURL: 'https://jsonplaceholder.typicode.com',
-    // headers: {'Content-Type': 'application/json'}
+    headers: {'Content-Type': 'application/json'},
 });
 
+axiosInstance.interceptors.request.use((request) => {
+    console.log(request);
+    request.headers.set("XXX", "XXXX");
+    console.log(request.method);
+    return request;
 
-export const getUsers = async (): Promise<IUser[]> => {
+});
+
+export const getAllUsers = async (): Promise<IUser[]> => {
     const {data} = await axiosInstance.get<IUser[]>('/users');
     return data;
 }
 
-axiosInstance.interceptors.request.use((request) => {
-    console.log(request);
-    request.headers.set('Content-Type', 'application/json');
-    return request;
-})
+export const saveUser = async (user: IUser): Promise<IUser> => {
+    const {data} = await axiosInstance.post<IUser>('/users', user);
+
+    return data;
+}
+
+// fetch('YOURURL', {
+//   method: 'POST',
+//   headers: {
+//     'Accept': 'application/json',
+//     'Content-Type': 'application/json',
+//   },
+//   body: JSON.stringify({
+//     key1: 'value1',
+//     key2: 'value2',
+//   })
+// })
+
+
 

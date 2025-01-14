@@ -1,17 +1,14 @@
 import './App.css';
 import {useEffect} from "react";
-import {getUsers} from "./services/user.service.ts";
+import {getAllUsers, saveUser} from "./services/user.service.ts";
 
 function App() {
-
     useEffect(() => {
+        getAllUsers().then(value => console.log(value));
 
-        getUsers().then((users) => {
-            console.log(users);
-        })
-
-
+        saveUser({id: 1, name: "John", email: "john@gmail.com"}).then(value => console.log(value));
     }, []);
+
     return (
         <>
 
